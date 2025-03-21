@@ -1,29 +1,62 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        {/* Original Content */}
+        <div className="flex flex-col sm:flex-row gap-16">
+          <div>
+            <Image
+              className="dark:invert"
+              src="/next.svg"
+              alt="Next.js logo"
+              width={180}
+              height={38}
+              priority
+            />
+            <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+              <li className="mb-2 tracking-[-.01em]">
+                Get started by editing{" "}
+                <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                  app/page.tsx
+                </code>
+                .
+              </li>
+              <li className="tracking-[-.01em]">
+                Save and see your changes instantly.
+              </li>
+            </ol>
+          </div>
+
+          {/* Demo Widget */}
+          <div className="p-6 border rounded-lg shadow-md bg-white dark:bg-gray-800">
+            <h2 className="text-lg font-bold mb-4">Demo Widget: Counter</h2>
+            <p className="text-sm mb-4">
+              This is a simple counter widget to demonstrate interactivity.
+            </p>
+            <div className="flex items-center gap-4">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={() => setCount(count - 1)}
+              >
+                -
+              </button>
+              <span className="text-lg font-semibold">{count}</span>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={() => setCount(count + 1)}
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
@@ -35,7 +68,7 @@ export default function Home() {
             <Image
               className="dark:invert"
               src="/vercel.svg"
-              alt="Vercel logomark"
+              alt="Vercel logo"
               width={20}
               height={20}
             />
